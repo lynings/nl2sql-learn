@@ -1,0 +1,78 @@
+[tool.poetry]
+name = "nl2sql-learn"
+version = "0.1.0"
+description = "A Text-to-SQL application using FastAPI, PostgreSQL, ChromaDB and Ollama"
+authors = ["Your Name <your.email@example.com>"]
+package-mode = false
+packages = [
+    { include = "app" }
+]
+
+[tool.poetry.dependencies]
+# 指定 Python 版本要求
+python = "^3.11"
+
+# Web 框架相关
+fastapi = "^0.109.2"      # 现代、快速的 Web 框架，用于构建 API
+uvicorn = "^0.27.1"       # ASGI 服务器，用于运行 FastAPI 应用
+
+# 数据库相关
+sqlalchemy = "^2.0.27"    # Python SQL 工具包和 ORM
+asyncpg = "^0.30.0"       # PostgreSQL 的异步驱动程序
+psycopg2-binary = "^2.9.9"  # PostgreSQL 的同步驱动程序（某些工具需要）
+
+# 向量数据库
+chromadb = "^0.4.22"      # 向量数据库，用于存储和检索相似文本
+
+# AI/ML 相关
+openai = "^1.12.0"       # OpenAI API 客户端
+
+# 工具包
+python-dotenv = "^1.0.1"  # 用于加载 .env 环境变量文件
+pydantic = "^2.6.1"       # 数据验证和设置管理
+aiohttp = "^3.9.3"        # 异步 HTTP 客户端/服务器框架，用于调用 Ollama API
+
+[tool.poetry.group.dev.dependencies]
+# 测试相关
+pytest = "^8.0.0"         # Python 测试框架
+pytest-asyncio = "^0.23.5"  # pytest 的异步测试支持
+
+# 代码质量工具
+black = "^24.1.1"         # Python 代码格式化工具
+isort = "^5.13.2"         # Python import 语句排序工具
+flake8 = "^7.0.0"         # Python 代码风格检查工具
+pre-commit = "^3.6.0"     # Git hooks 管理工具，用于自动化代码检查
+
+[build-system]
+# Poetry 核心依赖和构建后端
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+# Black 代码格式化配置
+line-length = 88          # 设置代码行长度
+target-version = ['py313']  # 目标 Python 版本
+include = '\.pyi?$'       # 包含的文件类型
+
+[tool.isort]
+# isort 导入排序配置
+profile = "black"         # 使用 black 兼容的配置
+multi_line_output = 3     # 多行输出样式
+
+[tool.poetry.scripts]
+# 常用命令快捷方式
+start = "uvicorn app.main:app --reload"  # 启动应用
+format = "black . && isort ."            # 格式化代码
+lint = "flake8 ."                        # 代码检查
+test = "pytest"                          # 运行测试
+setup-env = "poetry env use python3.11 && poetry install"  # 设置环境
+
+# 依赖包说明：
+# 1. FastAPI + Uvicorn: 提供高性能的 Web API 服务
+# 2. SQLAlchemy + asyncpg: 处理与 PostgreSQL 的异步数据库操作
+# 3. ChromaDB: 提供向量数据库功能，用于相似文本检索
+# 4. Transformers: 提供预训练模型支持，用于文本处理和理解
+# 5. aiohttp: 处理与 Ollama LLM 服务的异步通信
+# 6. 测试工具 (pytest): 确保代码质量和功能正确性
+# 7. 代码格式化工具 (black, isort, flake8): 保持代码风格一致
+# 8. pre-commit: 确保代码提交前的自动检查和格式化 

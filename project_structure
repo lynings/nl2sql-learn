@@ -1,0 +1,42 @@
+text2sql_app/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── config.py
+│   ├── database/
+│   │   ├── __init__.py
+│   │   ├── postgresql.py
+│   │   └── schema_store.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── request.py
+│   │   ├── response.py
+│   │   └── schema.py
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── context_service.py
+│   │   ├── intent_service.py
+│   │   ├── llm_service.py
+│   │   ├── prompt_service.py
+│   │   └── sql_generation.py
+│   ├── resources/
+│   │   ├── prompts/
+│   │   │   ├── table_extraction.md
+│   │   │   ├── field_extraction.md
+│   │   │   ├── constraint_analysis.md
+│   │   │   └── sql_generation.md
+│   │   └── schemas/
+│   │   │   ├── descriptions/
+│   │   │   │   ├── user.md
+│   │   │   │   ├── order.md
+│   │   │   │   └── product.md
+│   │   │   └── ddl/
+│   │   │   │   ├── user.md
+│   │   │   │   ├── order.md
+│   │   │   │   └── product.md
+│   │   └── business_rules/
+│   │   └── rules.md
+│   └── utils/
+│       ├── __init__.py
+│       ├── constants.py
+│       └── helpers.py 
