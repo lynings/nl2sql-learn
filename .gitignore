@@ -20,9 +20,9 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+app.log
 
 # Virtual Environment
-.env
 .venv
 venv/
 ENV/
@@ -37,4 +37,8 @@ ENV/
 chroma_db/
 
 # Pre-commit
-.pre-commit-config.yaml.cache 
+.pre-commit-config.yaml.cache
+
+# Schema files
+app/resources/schemas/ddl/*.md
+!app/resources/schemas/ddl/example.md 
